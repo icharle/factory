@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * "App\Http\Controllers\Admin"后台路由
+ */
+Route::namespace('Admin')->prefix('admin')->group(function () {
+    Route::get('/', 'IndexController@login');
+    Route::post('logincheck', 'IndexController@logincheck');
 });
