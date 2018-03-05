@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>星空us | 后工坊</title>
-    <link href="{{ ('css/index.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ ('css/admin/login.css') }}" rel="stylesheet" type="text/css" media="all">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -11,7 +11,7 @@
 
 <body>
 <div class="login">
-    <img src="{{ ('img/logo.png') }}" style="position:relative;left: 50% ;margin-left:-75px">
+    <img src="{{ ('img/admin/logo.png') }}" style="position:relative;left: 50% ;margin-left:-75px">
     <div class="login-top">
         <h1>管理员登录</h1>
         @if(Session::has('error'))

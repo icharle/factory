@@ -17,4 +17,7 @@
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('/', 'IndexController@login');
     Route::post('logincheck', 'IndexController@logincheck');
+
+
+    Route::get('index', 'IndexController@index');
 });
