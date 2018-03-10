@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStyleBannersTable extends Migration
+class CreateStyleActsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateStyleBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('style_banners', function (Blueprint $table) {
-            $table->increments('id')->comment('Banner主键');
-            $table->string('picurl')->comment('图片路径');
+        Schema::create('style_acts', function (Blueprint $table) {
+            $table->increments('id')->comment('活动记录主键');
+            $table->text('picurl')->comment('图片路径');
             $table->string('time')->comment('时间');
-            $table->string('center')->comment('中心');
-            $table->string('direction')->comment('方向');
+            $table->string('title')->comment('标题');
             $table->text('description')->comment('描述');
-            $table->integer('isshow')->default(0)->comment('前台是否显示 1为显示 0为未显示');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateStyleBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('style_banners');
+        Schema::dropIfExists('style_acts');
     }
 }

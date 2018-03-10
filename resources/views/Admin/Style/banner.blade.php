@@ -26,9 +26,9 @@
                                 <label>描述：</label>{{ $banner->description }}
                             </div>
                             <p>
-                                <a href="#" onclick="edit( {{ $banner->id }} )" class="btn btn-info "
-                                   data-toggle="modal" data-target="#myModal"
-                                   role="button">编辑</a>
+                                {{--<a href="#" onclick="edit( {{ $banner->id }} )" class="btn btn-info "--}}
+                                   {{--data-toggle="modal" data-target="#myModal"--}}
+                                   {{--role="button">编辑</a>--}}
                                 <a href="#" onclick="del( {{ $banner->id }} )" class="btn btn-danger"
                                    role="button">删除</a>
                                 <a href="#" onclick="use( {{ $banner->id }} )" class="btn btn-success"

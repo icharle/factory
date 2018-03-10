@@ -8,27 +8,29 @@
         <h3 class="page-header">列表</h3>
 
         <div class="row">
-            <div class="col-sm-4 col-md-3">
-                <div class="thumbnail">
-                    <img src="http://kidultyx.com/factory_2018/image/item1.png">
-                    <div class="caption">
-                        <div>
-                            <label>时间：</label>2018-04-03
+            @foreach($activitys as $key=>$activity)
+                <div class="col-sm-4 col-md-3">
+                    <div class="thumbnail">
+                        <img src="{{ $picurl[$key] }}">
+                        <div class="caption">
+                            <div>
+                                <label>时间：</label>{{ $activity->time }}
+                            </div>
+                            <div>
+                                <label>标题：</label>{{ $activity->title }}
+                            </div>
+                            <div>
+                                <label>描述：</label>{{ $activity->description }}
+                            </div>
+                            <p>
+                                <a href="#" class="btn btn-info " data-toggle="modal" data-target="#myModal"
+                                   role="button">编辑</a>
+                                <a href="#" onclick="del( {{ $activity->id }} )" class="btn btn-danger" role="button">删除</a>
+                            </p>
                         </div>
-                        <div>
-                            <label>标题：</label>技术研发中心
-                        </div>
-                        <div>
-                            <label>描述：</label>技术研发中心技术研发中心技术研发中心技术研发中心技术研发中心技术研发中心技术研发中心技术研发中心
-                        </div>
-                        <p>
-                            <a href="#" class="btn btn-info " data-toggle="modal" data-target="#myModal"
-                               role="button">编辑</a>
-                            <a href="#" class="btn btn-danger" role="button">删除</a>
-                        </p>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -40,12 +42,14 @@
                             添加活动记录
                         </h4>
                     </div>
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="{{ url('admin/StyleAct') }}" method="post"
+                          enctype="multipart/form-data">
+                        {{csrf_field()}}
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="pic" class="col-sm-2 control-label">图片：</label>
                                 <div class="col-sm-7">
-                                    <input type="file" class="form-control" id="pic" name="pic[]">
+                                    <input type="file" class="form-control" id="pic" name="picurl[]">
                                     <button type="button" class="btn btn-primary" onclick="addInput(this)"><span
                                                 class="glyphicon glyphicon-plus"></span></button>
                                 </div>
@@ -54,7 +58,7 @@
                                 <label for="time" class="col-sm-2 control-label">时间：</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="time" name="time"
-                                           placeholder="2018-04-03">
+                                           placeholder="2018-04">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -75,7 +79,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                             </button>
-                            <button type="button" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary">
                                 提交
                             </button>
                         </div>
@@ -88,9 +92,27 @@
     <script>
 
         //添加
-        function addInput(obj){
-            html = '<input type="file" class="form-control" id="pic" name="pic[]">'
-            obj.insertAdjacentHTML('beforebegin',html)
+        function addInput(obj) {
+            html = '<input type="file" class="form-control" id="pic" name="picurl[]">'
+            obj.insertAdjacentHTML('beforebegin', html)
+        }
+
+        function del(id) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('admin/StyleAct') }}" + '/' + id,
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    _method: 'DELETE'
+                },
+                success: function (data) {
+                    if (data.status == 200) {
+                        layer.msg('删除成功', {icon: 6});
+                    } else if (data.status == 501) {
+                        layer.msg('删除失败', {icon: 5});
+                    }
+                }
+            });
         }
     </script>
 @endsection
