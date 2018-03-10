@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\File;
+
+use App\Model\Admin\StyleBanner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class StyleBannerController
@@ -21,7 +21,8 @@ class StyleBannerController extends Controller
      */
     public function index()
     {
-        return view('Admin.Style.banner');
+        $banners = StyleBanner::all();
+        return view('Admin.Style.banner', compact('banners'));
     }
 
     /**
@@ -52,9 +53,15 @@ class StyleBannerController extends Controller
 //            $entension = $file->getClientOriginalExtension();   // 上传文件的后缀
 //            $newName = $originalName;        //文件名
 
-            $path = $file->move('upload/style/banner/', $originalName);   //完整路径
-            $res['picurl'] = '/upload/style/banner/' . $originalName;
+            $path = $file->move('upload/style/banner/', $originalName);   //保存文件
 
+            $res['picurl'] = '/upload/style/banner/' . $originalName;           //图片路径
+            $res['time'] = $data['time'];                                       //时间
+            $res['center'] = $data['center'];                                   //中心
+            $res['direction'] = $data['direction'];                             //方向
+            $res['description'] = $data['description'];                         //描述
+
+            StyleBanner::create($res);                  //保存数据库中
         }
     }
 
@@ -74,10 +81,21 @@ class StyleBannerController extends Controller
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * 编辑实例
      */
     public function edit($id)
     {
-        //
+        $banner = StyleBanner::find($id);
+        $data = [
+            'status' => '200',
+            'picurl' => $banner['picurl'],
+            'time' => $banner['time'],
+            'center' => $banner['center'],
+            'direction' => $banner['direction'],
+            'description' => $banner['description']
+        ];
+
+        return $data;
     }
 
     /**
@@ -86,10 +104,11 @@ class StyleBannerController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * 更新实例
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -97,9 +116,59 @@ class StyleBannerController extends Controller
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * 删除实例
      */
     public function destroy($id)
     {
-        //
+        $banner = StyleBanner::find($id);
+        if ($banner->delete()) {
+            $data = [
+                'status' => '200',
+                'msg' => '删除成功'
+            ];
+        } else {
+            $data = [
+                'status' => '501',
+                'msg' => '删除失败'
+            ];
+        }
+        return $data;
+    }
+
+    /**
+     * @param $id
+     * @return array
+     * 是否启用按钮
+     */
+    public function isUse($id)
+    {
+        $total = StyleBanner::where('isshow', 1)->count();       //已启用的总数(限制4个banner)
+        if ($total > 4) {
+            $data = [
+                'status' => '503',
+                'msg' => '超过banner数限制'
+            ];
+        } else {
+            //更改属性
+            $banner = StyleBanner::find($id);
+            if ($banner['isshow'] == 1) {
+                $data['isshow'] = 0;
+            } else {
+                $data['isshow'] = 1;
+            }
+            $res = StyleBanner::where('id', $id)->update($data);     //更新表字段
+            if ($res) {
+                $data = [
+                    'status' => '200',
+                    'msg' => '更改成功'
+                ];
+            } else {
+                $data = [
+                    'status' => '501',
+                    'msg' => '更改失败'
+                ];
+            }
+        }
+        return $data;
     }
 }

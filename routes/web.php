@@ -20,4 +20,8 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 
 
     Route::get('index', 'IndexController@index');
+
+    //组织面貌路由    Banner
+    Route::resource('StyleBanner', 'StyleBannerController');
+    Route::post('StyleBanner/isUse/{id}', 'StyleBannerController@isUse');
 });
