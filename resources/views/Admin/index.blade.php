@@ -55,8 +55,8 @@
                 </a>
                 <ul id="nav-basicinfo" class="nav collapse">
                     <li><a href="{{ url('admin/StyleBanner') }}"><span>Banner管理</span></a></li>
-                    <li><a href="#/basicinfo/user"><span>活动记录</span></a></li>
-                    <li><a href="#/basicinfo/role"><span>星空人去向</span></a></li>
+                    <li><a href="{{ url('admin/StyleAct') }}"><span>活动记录</span></a></li>
+                    <li><a href="{{ url('admin/StyleHis') }}"><span>星空人去向</span></a></li>
                 </ul>
             </li>
             <li>

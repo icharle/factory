@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Admin\StyleAct;
+use App\Model\Admin\StyleHis;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class StyleActController extends Controller
+class StyleHisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,8 @@ class StyleActController extends Controller
      */
     public function index()
     {
-        $activitys = StyleAct::all();
-
-        //多个图片情况下，只显示第一张图片
-        $picurl = array();
-        foreach ($activitys as $activity) {
-            $temp = explode(',', $activity['picurl']);
-            $picurl[] = $temp['0'];
-        }
-
-        return view('Admin.Style.activity', compact('activitys', 'picurl'));
+        $historys = StyleHis::all();
+        return view('Admin.Style.graduate', compact('historys'));
     }
 
     /**
@@ -42,28 +34,25 @@ class StyleActController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
-     * 保存
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $picurls = $request->file('picurl');
-        $imgurl = '';      //存储图片链接
-        foreach ($picurls as $picurl) {
-            if ($picurl->isValid()) {
-                $originalName = $picurl->getClientOriginalName();     // 文件原名
-                $path = $picurl->move('upload/style/activity/', $originalName);   //保存文件
-                $imgurl = $imgurl . '/upload/style/activity/' . $originalName . ',';
-            }
-        }
-        $imgurl = substr($imgurl, 0, strlen($imgurl) - 1);      //去除最后一位','
+        $history = $request->all();
+        $avatar = $request->file('avatar');
+        if ($avatar->isValid()) {
+            $originalName = $avatar->getClientOriginalName();     // 文件原名
 
-        //插库处理
-        $res['picurl'] = $imgurl;                           //图片链接
-        $res['time'] = $data['time'];                       //活动时间
-        $res['title'] = $data['title'];                     //标题
-        $res['description'] = $data['description'];         //描述
-        StyleAct::create($res);
+            $path = $avatar->move('upload/style/avatar/', $originalName);   //保存文件
+
+            $res['picurl'] = '/upload/style/avatar/' . $originalName;           //图片路径
+            $res['year'] = $history['year'];                                       //年份
+            $res['username'] = $history['username'];                                   //姓名
+            $res['oldoffice'] = $history['oldoffice'];                             //曾任
+            $res['newoffice'] = $history['newoffice'];                         //现任
+
+            StyleHis::create($res);             //存库处理
+        }
+
     }
 
     /**
@@ -108,8 +97,8 @@ class StyleActController extends Controller
      */
     public function destroy($id)
     {
-        $activity = StyleAct::find($id);
-        if ($activity->delete()) {
+        $history = StyleHis::find($id);
+        if ($history->delete()) {
             $data = [
                 'status' => '200',
                 'msg' => '删除成功'

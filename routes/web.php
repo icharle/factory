@@ -21,9 +21,14 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 
     Route::get('index', 'IndexController@index');
 
-    //组织面貌路由    Banner
+    /**
+     * 组织风貌模块
+     */
+    //Banner管理
     Route::resource('StyleBanner', 'StyleBannerController');
     Route::post('StyleBanner/isUse/{id}', 'StyleBannerController@isUse');
-
+    //活动记录
     Route::resource('StyleAct', 'StyleActController');
+    //星空人去向
+    Route::resource('StyleHis', 'StyleHisController');
 });

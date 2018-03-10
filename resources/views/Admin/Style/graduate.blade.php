@@ -3,29 +3,30 @@
     <div>
         <h3 class="page-header">操作</h3>
         <ol class="breadcrumb">
-            <li><a href="#" data-toggle="modal" data-target="#myModal">添加活动记录</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal">添加星人</a></li>
         </ol>
         <h3 class="page-header">列表</h3>
 
         <div class="row">
-            @foreach($activitys as $key=>$activity)
+            @foreach($historys as $history)
                 <div class="col-sm-4 col-md-3">
                     <div class="thumbnail">
-                        <img src="{{ $picurl[$key] }}">
+                        <img src="{{ $history->picurl }}">
                         <div class="caption">
                             <div>
-                                <label>时间：</label>{{ $activity->time }}
+                                <label>姓名：</label>{{ $history->username }}
                             </div>
                             <div>
-                                <label>标题：</label>{{ $activity->title }}
+                                <label>曾任：</label>{{ $history->oldoffice }}
                             </div>
                             <div>
-                                <label>描述：</label>{{ $activity->description }}
+                                <label>现任：</label>{{ $history->newoffice }}
                             </div>
                             <p>
                                 <a href="#" class="btn btn-info " data-toggle="modal" data-target="#myModal"
                                    role="button">编辑</a>
-                                <a href="#" onclick="del( {{ $activity->id }} )" class="btn btn-danger" role="button">删除</a>
+                                <a href="#" onclick="del( {{ $history->id }} )" class="btn btn-danger"
+                                   role="button">删除</a>
                             </p>
                         </div>
                     </div>
@@ -39,40 +40,44 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">
-                            添加活动记录
+                            添加星人
                         </h4>
                     </div>
-                    <form class="form-horizontal" role="form" action="{{ url('admin/StyleAct') }}" method="post"
+                    <form class="form-horizontal" role="form" action="{{ url('admin/StyleHis') }}" method="post"
                           enctype="multipart/form-data">
-                        {{csrf_field()}}
+                        {{ csrf_field() }}
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="pic" class="col-sm-2 control-label">图片：</label>
+                                <label for="avatar" class="col-sm-2 control-label">头像：</label>
                                 <div class="col-sm-7">
-                                    <input type="file" class="form-control" id="pic" name="picurl[]">
-                                    <button type="button" class="btn btn-primary" onclick="addInput(this)"><span
-                                                class="glyphicon glyphicon-plus"></span></button>
+                                    <input type="file" class="form-control" id="avatar" name="avatar">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="time" class="col-sm-2 control-label">时间：</label>
+                                <label for="year" class="col-sm-2 control-label">年份：</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="time" name="time"
-                                           placeholder="2018-04">
+                                    <input type="text" class="form-control" id="year" name="year" placeholder="2018">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">标题：</label>
+                                <label for="username" class="col-sm-2 control-label">姓名：</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="title" name="title"
-                                           placeholder="技术研发中心">
+                                    <input type="text" class="form-control" id="username" name="username"
+                                           placeholder="xxx">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description" class="col-sm-2 control-label">描述：</label>
+                                <label for="oldoffice" class="col-sm-2 control-label">曾任：</label>
                                 <div class="col-sm-7">
-                                    <textarea class="form-control" id="description" name="description"
-                                              placeholder="小星空，大梦想，加入我们快速成长"></textarea>
+                                    <input type="text" class="form-control" id="oldoffice" name="oldoffice"
+                                           placeholder="CEO">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newoffice" class="col-sm-2 control-label">现任：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="newoffice" name="newoffice"
+                                           placeholder="腾讯">
                                 </div>
                             </div>
                         </div>
@@ -91,17 +96,11 @@
 
     <script>
 
-        //添加上传框
-        function addInput(obj) {
-            html = '<input type="file" class="form-control" id="pic" name="picurl[]">'
-            obj.insertAdjacentHTML('beforebegin', html)
-        }
-
         //删除实例
         function del(id) {
             $.ajax({
                 type: 'POST',
-                url: "{{ url('admin/StyleAct') }}" + '/' + id,
+                url: "{{ url('admin/StyleHis') }}" + '/' + id,
                 data: {
                     _token: '{{ csrf_token() }}',
                     _method: 'DELETE'
