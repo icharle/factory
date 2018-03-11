@@ -51,7 +51,7 @@
                 <ul id="nav-basicinfo" class="nav collapse">
                     <li><a href="{{ url('admin/CenterBanner') }}"><span>Banner管理</span></a></li>
                     <li><a href="{{ url('admin/CenterAct') }}"><span>活动记录</span></a></li>
-                    <li><a href="{{ url('admin/StyleHis') }}"><span>工作记录</span></a></li>
+                    <li><a href="{{ url('admin/CenterWork') }}"><span>工作记录</span></a></li>
                 </ul>
             </li>
             <li>

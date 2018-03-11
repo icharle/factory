@@ -51,5 +51,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::post('CenterBanner/isUse/{id}', 'CenterBannerController@isUse');
     //活动记录
     Route::resource('CenterAct', 'CenterActController');
+    //工作记录
+    Route::resource('CenterWork', 'CenterWorkController');
 
 });
