@@ -61,10 +61,10 @@
             </li>
             <li>
                 <a href="#nav-shopinfo" data-toggle="collapse">
-                    <i class="glyphicon glyphicon-asterisk"></i><span>商家信息</span>
+                    <i class="glyphicon glyphicon-asterisk"></i><span>组织视频</span>
                 </a>
                 <ul id="nav-shopinfo" class="nav collapse">
-                    <li><a href="#/shopinfo/shop"><span>商家管理</span></a></li>
+                    <li><a href="{{ url('admin/VideoBanner') }}"><span>Banner管理</span></a></li>
                     <li><a href="#/shopinfo/shopproduct"><span>商品管理</span></a></li>
                 </ul>
             </li>

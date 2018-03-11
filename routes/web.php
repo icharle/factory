@@ -31,4 +31,12 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::resource('StyleAct', 'StyleActController');
     //星空人去向
     Route::resource('StyleHis', 'StyleHisController');
+
+
+    /**
+     * 组织视频模块
+     */
+    //Banner管理
+    Route::resource('VideoBanner', 'VideoBannerController');
+    Route::post('VideoBanner/isUse/{id}', 'VideoBannerController@isUse');
 });
