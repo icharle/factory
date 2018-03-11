@@ -45,13 +45,14 @@
     <div id="sidebar-accordion" class="sidebar-accordion">
         <ul class="nav sidebar-nav">
             <li class="active">
-                <a href="#nav-basicinfo" data-toggle="collapse" aria-expanded="false" aria-controls="nav-basicinfo">
+                <a href="#nav-homeinfo" data-toggle="collapse" aria-expanded="false" aria-controls="nav-homeinfo">
                     <i class="glyphicon glyphicon-home"></i><span>三大中心</span>
                 </a>
-                <ul id="nav-basicinfo" class="nav collapse">
+                <ul id="nav-homeinfo" class="nav collapse">
                     <li><a href="{{ url('admin/CenterBanner') }}"><span>Banner管理</span></a></li>
                     <li><a href="{{ url('admin/CenterAct') }}"><span>活动记录</span></a></li>
                     <li><a href="{{ url('admin/CenterWork') }}"><span>工作记录</span></a></li>
+                    <li><a href="{{ url('admin/CenterWechat') }}"><span>微信推文</span></a></li>
                 </ul>
             </li>
             <li>
