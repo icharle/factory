@@ -45,9 +45,14 @@
     <div id="sidebar-accordion" class="sidebar-accordion">
         <ul class="nav sidebar-nav">
             <li class="active">
-                <a href="#/home">
-                    <i class="glyphicon glyphicon-home"></i><span>HOME</span>
+                <a href="#nav-basicinfo" data-toggle="collapse" aria-expanded="false" aria-controls="nav-basicinfo">
+                    <i class="glyphicon glyphicon-home"></i><span>三大中心</span>
                 </a>
+                <ul id="nav-basicinfo" class="nav collapse">
+                    <li><a href="{{ url('admin/CenterBanner') }}"><span>Banner管理</span></a></li>
+                    <li><a href="{{ url('admin/StyleAct') }}"><span>活动记录</span></a></li>
+                    <li><a href="{{ url('admin/StyleHis') }}"><span>星空人去向</span></a></li>
+                </ul>
             </li>
             <li>
                 <a href="#nav-basicinfo" data-toggle="collapse" aria-expanded="false" aria-controls="nav-basicinfo">
@@ -65,7 +70,7 @@
                 </a>
                 <ul id="nav-shopinfo" class="nav collapse">
                     <li><a href="{{ url('admin/VideoBanner') }}"><span>Banner管理</span></a></li>
-                    <li><a href="#/shopinfo/shopproduct"><span>商品管理</span></a></li>
+                    <li><a href="{{ url('admin/VideoWork') }}"><span>作品管理</span></a></li>
                 </ul>
             </li>
         </ul>

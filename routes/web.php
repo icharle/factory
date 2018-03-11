@@ -39,4 +39,15 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     //Banner管理
     Route::resource('VideoBanner', 'VideoBannerController');
     Route::post('VideoBanner/isUse/{id}', 'VideoBannerController@isUse');
+    //作品管理
+    Route::resource('VideoWork', 'VideoWorkController');
+
+
+    /**
+     * 组织视频模块
+     */
+    //Banner管理
+    Route::resource('CenterBanner', 'CenterBannerController');
+    Route::post('CenterBanner/isUse/{id}', 'CenterBannerController@isUse');
+
 });
