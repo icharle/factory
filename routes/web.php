@@ -44,10 +44,12 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 
 
     /**
-     * 组织视频模块
+     * 三大中心模块
      */
     //Banner管理
     Route::resource('CenterBanner', 'CenterBannerController');
     Route::post('CenterBanner/isUse/{id}', 'CenterBannerController@isUse');
+    //活动记录
+    Route::resource('CenterAct', 'CenterActController');
 
 });
