@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/**
+  * @created: 2018.02.12
+  * @author: kidultyx
+  * @version: 1.1
+  * @desc: 后工坊尾栏
+  */
+
+footer {
+	padding: 40px 0;
+	background-color: rgb(63,134,214);
+	font-family: HanYiFont;
+}
+.uslogo{
+	margin: 0 auto;
+	width: 200px;
+	height: 50px;
+	background-image: url(../../img/home/whiteuslogo.png);
+	background-size: auto 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.copyright{
+	margin-top: 40px;
+	width: 100%;
+	height: 60px;
+	font-size: 15px;
+	color: rgb(255,255,255);
+	text-align: center;
+}
+

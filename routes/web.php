@@ -59,3 +59,9 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::resource('CenterProduction', 'CenterProductionController');
 
 });
+
+Route::namespace('Home')->group(function () {
+
+    Route::get('/', 'IndexController@index');
+
+});
