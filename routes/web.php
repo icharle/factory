@@ -55,5 +55,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::resource('CenterWork', 'CenterWorkController');
     //微信推文
     Route::resource('CenterWechat', 'CenterWechatController');
+    //作品分类
+    Route::resource('CenterProduction', 'CenterProductionController');
 
 });
