@@ -11,4 +11,10 @@ class IndexController extends Controller
     {
         return view('Home.index');
     }
+
+
+    public function video()
+    {
+        return view('Home.video');
+    }
 }
