@@ -123,7 +123,7 @@ class ApiController extends Controller
             }
         }
 
-        foreach ($wechatpros as $wechatpro){
+        foreach ($wechatpros as $wechatpro) {
             $ycproduct[] = array(
                 'content' => $wechatpro['save_file'],
                 'name' => $wechatpro['title'],
@@ -346,12 +346,14 @@ class ApiController extends Controller
         return response()
             ->json([
                 'show' => [
-                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $banners['video'] . '&tiny=0&auto=0',
-                    'name' => $banners['title'],
-                    'author' => $banners['author'],
-                    'time' => $banners['time'],
-                    'people' => $banners['people'],
-                    'text' => $banners['description']
+                    array(
+                        'src' => 'https://v.qq.com/iframe/player.html?vid=' . $banners['video'] . '&tiny=0&auto=0',
+                        'name' => $banners['title'],
+                        'author' => $banners['author'],
+                        'time' => $banners['time'],
+                        'people' => $banners['people'],
+                        'text' => $banners['description']
+                    )
                 ],
                 'classifyname' => ['街坊视频', '星空直播', '其他'],
                 'classify' => [
