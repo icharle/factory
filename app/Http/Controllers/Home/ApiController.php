@@ -40,18 +40,18 @@ class ApiController extends Controller
             } elseif ($banner['sort'] == '1') {
                 $cmbanner[] = array(                            //传媒板块banner
                     'img' => $banner['picurl'],
-                    'name' => $banner['title'],
-                    'author' => $banner['direction'],
-                    'time' => $banner['time'],
-                    'text' => $banner['description'],
+//                    'name' => $banner['title'],
+//                    'author' => $banner['direction'],
+//                    'time' => $banner['time'],
+//                    'text' => $banner['description'],
                 );
             } elseif ($banner['sort'] == '2') {
                 $ycbanner[] = array(                            //运策板块banner
                     'img' => $banner['picurl'],
-                    'name' => $banner['title'],
-                    'author' => $banner['direction'],
-                    'time' => $banner['time'],
-                    'text' => $banner['description'],
+//                    'name' => $banner['title'],
+//                    'author' => $banner['direction'],
+//                    'time' => $banner['time'],
+//                    'text' => $banner['description'],
                 );
             }
         }
@@ -109,13 +109,13 @@ class ApiController extends Controller
                     );
                 } elseif ($product['sort'] == '5') {                    //街坊视频
                     $jiefangproduct[] = array(
-                        'src' => $product['video_url'],
+                        'src' => 'https://v.qq.com/iframe/player.html?vid=' . $product['video_url'] . '&tiny=0&auto=0',
                         'name' => $product['title'],
                         'author' => $product['author'],
                     );
                 } elseif ($product['sort'] == '6') {                    //摄影视频
                     $sheyingproduct[] = array(
-                        'src' => $product['video_url'],
+                        'src' => 'https://v.qq.com/iframe/player.html?vid=' . $product['video_url'] . '&tiny=0&auto=0',
                         'name' => $product['title'],
                         'author' => $product['author'],
                     );
@@ -239,7 +239,7 @@ class ApiController extends Controller
                 'yc' => array(
                     'show' => $ycbanner,
                     'classifyname' => ["推文"],
-                    'classify' => $ycproduct,
+                    'classify' => [$ycproduct],
                     'activityrecord' => $ycact,
                     'workrecord' => $ycwork
                 )
