@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'api'], function () {
 
+    Route::post('sdzx', 'Home\ApiController@sdzx');
     Route::post('zzfm', 'Home\ApiController@zzfm');
     Route::post('zzsp', 'Home\ApiController@zzsp');
 
