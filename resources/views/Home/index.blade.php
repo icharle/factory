@@ -12,7 +12,7 @@
 <header class="home">
     <a href="http://www.xignkong.us" class="ushref"></a>
     <nav id="nav">
-        <a href="index.html" class="homebutton">首页</a>
+        <a href="{{ url('/') }}" class="homebutton">首页</a>
     </nav>
 </header>
 
@@ -24,22 +24,22 @@
 
 <article>
     <section>
-        <a href="sdzx.html" id="sdzx" class="first first-1">三大中心</a>
+        <a href="{{ url('center') }}" id="sdzx" class="first first-1">三大中心</a>
     </section>
     <section>
-        <a href="zzfm.html" id="zzfm" class="first first-2">组织风貌</a>
+        <a href="{{ url('style') }}" id="zzfm" class="first first-2">组织风貌</a>
     </section>
     <section>
-        <a href="zzsp.html" id="zzsp" class="first first-3">组织视频</a>
+        <a href="{{ url('video') }}" id="zzsp" class="first first-3">组织视频</a>
     </section>
     <section>
-        <a href="zzfm.html" class="second-1 second">集体合照</a>
+        <a href="{{ url('style') }}" class="second-1 second">集体合照</a>
     </section>
     <section>
-        <a href="zzfm.html" class="second-2 second">活动记录</a>
+        <a href="{{ url('style') }}" class="second-2 second">活动记录</a>
     </section>
     <section>
-        <a href="zzfm.html" class="second-3 second">星空人毕业去向</a>
+        <a href="{{ url('style') }}" class="second-3 second">星空人毕业去向</a>
     </section>
 </article>
 

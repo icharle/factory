@@ -1,9 +1,10 @@
 // $(document).ready(function() {
 
 // 加载数据
-	var API_URL = "data-sdzx.json";
+	var API_URL = "http://factory.test/api/sdzx";
 	$.ajax({
 		url: API_URL,
+		type: 'post',
 		async: false,
 		success: function(res) {
 			js = res.js;

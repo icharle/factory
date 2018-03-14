@@ -12,6 +12,11 @@ class IndexController extends Controller
         return view('Home.index');
     }
 
+    public function center()
+    {
+        return view('Home.center');
+    }
+
     public function style()
     {
         return view('Home.style');

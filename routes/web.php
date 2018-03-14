@@ -64,6 +64,7 @@ Route::namespace('Home')->group(function () {
 
     Route::get('/', 'IndexController@index');
 
+    Route::get('center', 'IndexController@center');
     Route::get('style', 'IndexController@style');
     Route::get('video', 'IndexController@video');
 
