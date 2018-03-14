@@ -19,6 +19,7 @@ class CreateCenterProductionsTable extends Migration
             $table->string('video_url')->comment('视频链接');
             $table->string('time')->comment('时间');
             $table->string('title')->comment('标题');
+            $table->string('author')->comment('作者');
             $table->string('center')->comment('中心 0为技术研发中心 1为文化传媒中心');
             $table->string('sort')->comment('分类 0为web 1为Android 2为iOS 3为海报 4为UI设计 5为街坊视频 6为摄影视频');
             $table->timestamps();

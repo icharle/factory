@@ -49,6 +49,7 @@ class CenterProductionController extends Controller
             $res['title'] = $data['title'];                                     //标题
             $res['sort'] = $data['sort'];                                       //类别(0为web 1为Android 2为iOS 3为海报 4为UI设计 5为街坊视频 6为摄影视频)
             $res['center'] = $data['center'];                             //中心(0为技术研发中心 1为文化传媒中心)
+            $res['author'] = $data['author'];                             //作者
             $res['video_url'] = '0';                             //视频链接默认为0，表示有图片情况下不能有视频
 
         } else {
@@ -57,6 +58,7 @@ class CenterProductionController extends Controller
             $res['title'] = $data['title'];                                     //标题
             $res['sort'] = $data['sort'];                                       //类别(0为web 1为Android 2为iOS 3为海报 4为UI设计 5为街坊视频 6为摄影视频)
             $res['center'] = $data['center'];                             //中心
+            $res['author'] = $data['author'];                             //作者
             $res['video_url'] = $data['video_url'];                             //视频链接默认为0，表示有图片情况下不能有视频
         }
 

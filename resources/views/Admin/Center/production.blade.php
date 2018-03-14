@@ -88,6 +88,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="author" class="col-sm-2 control-label">作者：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="author" name="author"
+                                           placeholder="作者">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="center" class="col-sm-2 control-label">中心：</label>
                                 <div class="col-sm-7">
                                     <select class="form-control" name="center" id="center">
