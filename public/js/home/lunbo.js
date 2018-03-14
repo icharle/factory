@@ -37,9 +37,9 @@
 
 		for( var j = 0; j < dotkid.length; j++) {
 			if ( j == (p - 1) ) {
-				$(dotkid[j]).css('background-image','url(image/stagedoth.png)');
+				$(dotkid[j]).css('background-image','url(img/home/stagedoth.png)');
 			}else {
-				$(dotkid[j]).css('background-image','url(image/stagedot.png)');
+				$(dotkid[j]).css('background-image','url(img/home/stagedot.png)');
 			}
 		}
 	}

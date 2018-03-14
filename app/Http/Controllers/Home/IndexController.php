@@ -12,6 +12,10 @@ class IndexController extends Controller
         return view('Home.index');
     }
 
+    public function style()
+    {
+        return view('Home.style');
+    }
 
     public function video()
     {

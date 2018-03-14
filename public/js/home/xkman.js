@@ -1,8 +1,9 @@
 $(document).ready(function() {
-	var APT_URL = "js/data-xkman.json";
+	var APT_URL = "http://factory.test/api/zzfm";
 
 	$.ajax({
 		url: APT_URL,
+		type: 'post',
 		async: false,
 		success: function(res) {
 			xkmandata = res.xkmandata;
