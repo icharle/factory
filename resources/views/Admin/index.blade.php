@@ -31,7 +31,7 @@
 
     <div id="navbar-tool" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/logout">退出登录</a></li>
+            <li><a href="{{ url('admin/logout') }}">退出登录</a></li>
         </ul>
     </div>
 </div>

@@ -33,7 +33,7 @@ class IndexController extends Controller
             $user = User::where('username', '=', $username)->first();
             if ($user && $user->username == $username && $user->password == md5($password)) {
 
-                session([ 'username' => $username ] );      //登录成功，记录session
+                session(['username' => $username]);      //登录成功，记录session
 
                 return redirect('admin/index');         //进行跳转
             } else {
@@ -49,5 +49,15 @@ class IndexController extends Controller
     public function index()
     {
         return view('Admin.index');
+    }
+
+
+    /**
+     * 退出登录
+     */
+    public function logout()
+    {
+        session(['username' => '']);      //退出登录，删除session
+        return redirect('admin');
     }
 }

@@ -21,7 +21,11 @@ Route::post('admin/logincheck', 'Admin\IndexController@logincheck');
 
 Route::namespace('Admin')->prefix('admin')->middleware(['admin.login'])->group(function () {
 
+    //后台主页面
     Route::get('index', 'IndexController@index');
+
+    //退出登录按钮
+    Route::get('logout', 'IndexController@logout');
 
     /**
      * 组织风貌模块
@@ -62,11 +66,22 @@ Route::namespace('Admin')->prefix('admin')->middleware(['admin.login'])->group(f
 
 });
 
+
+/**
+ * 前台页面
+ */
 Route::namespace('Home')->group(function () {
 
+    //首页
     Route::get('/', 'IndexController@index');
+
+    //三大中心
     Route::get('center', 'IndexController@center');
+
+    //组织风貌
     Route::get('style', 'IndexController@style');
+
+    //组织视频
     Route::get('video', 'IndexController@video');
 
 });
