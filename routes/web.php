@@ -14,10 +14,12 @@
 /**
  * "App\Http\Controllers\Admin"后台路由
  */
-Route::namespace('Admin')->prefix('admin')->group(function () {
-    Route::get('/', 'IndexController@login');
-    Route::post('logincheck', 'IndexController@logincheck');
 
+//后台登录验证
+Route::get('admin/', 'Admin\IndexController@login');
+Route::post('admin/logincheck', 'Admin\IndexController@logincheck');
+
+Route::namespace('Admin')->prefix('admin')->middleware(['admin.login'])->group(function () {
 
     Route::get('index', 'IndexController@index');
 
@@ -63,7 +65,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 Route::namespace('Home')->group(function () {
 
     Route::get('/', 'IndexController@index');
-
     Route::get('center', 'IndexController@center');
     Route::get('style', 'IndexController@style');
     Route::get('video', 'IndexController@video');
