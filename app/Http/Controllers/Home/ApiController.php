@@ -325,21 +325,21 @@ class ApiController extends Controller
         foreach ($videos as $video) {
             if ($video['sort'] == 0) {
                 $neighbor[] = array(
-                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $banners['video'] . '&tiny=0&auto=0',
-                    'name' => $banners['title'],
-                    'author' => $banners['author']
+                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $video['video'] . '&tiny=0&auto=0',
+                    'name' => $video['title'],
+                    'author' => $video['author']
                 );
             } elseif ($video['sort'] == 1) {
                 $xingkonglive[] = array(
-                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $banners['video'] . '&tiny=0&auto=0',
-                    'name' => $banners['title'],
-                    'author' => $banners['author']
+                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $video['video'] . '&tiny=0&auto=0',
+                    'name' => $video['title'],
+                    'author' => $video['author']
                 );
             } elseif ($video['sort'] == 2) {
                 $other[] = array(
-                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $banners['video'] . '&tiny=0&auto=0',
-                    'name' => $banners['title'],
-                    'author' => $banners['author']
+                    'src' => 'https://v.qq.com/iframe/player.html?vid=' . $video['video'] . '&tiny=0&auto=0',
+                    'name' => $video['title'],
+                    'author' => $video['author']
                 );
             }
         }
