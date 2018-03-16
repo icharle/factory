@@ -37,9 +37,9 @@
                                 <label>时间：</label>{{ $product->time }}
                             </div>
                             <p>
-                                <a href="#" class="btn btn-info " data-toggle="modal" data-target="#myModal"
-                                   role="button">编辑</a>
-                                <a href="#" onclick="del( {{ $product->id }} )" class="btn btn-danger"
+                                {{--<a href="javascript:void(0);" class="btn btn-info " data-toggle="modal" data-target="#myModal"--}}
+                                   {{--role="button">编辑</a>--}}
+                                <a href="javascript:void(0);" onclick="del( {{ $product->id }} )" class="btn btn-danger"
                                    role="button">删除</a>
                             </p>
                         </div>
@@ -145,6 +145,7 @@
                 success: function (data) {
                     if (data.status == 200) {
                         layer.msg('删除成功', {icon: 6});
+                        window.location.href = "{{ url('admin/CenterProduction') }}";
                     } else if (data.status == 501) {
                         layer.msg('删除失败', {icon: 5});
                     }

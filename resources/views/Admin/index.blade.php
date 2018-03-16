@@ -84,7 +84,8 @@
 </div>
 
 <!-- Bootstrap JavaScript -->
-<script type="text/javascript" src="{{ asset('js/admin/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/home/jquery-3.2.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin/layer.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/admin/bootstrap.min.js') }}"></script>
 <script type="text/javascript">
     initSidebarAccordion();

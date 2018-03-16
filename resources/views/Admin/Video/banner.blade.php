@@ -29,12 +29,12 @@
                                 <label>参演人员：</label>{{ $video->people }}
                             </div>
                             <p>
-                                <a href="#" onclick="edit( {{ $video->id }} )" class="btn btn-info "
-                                   data-toggle="modal" data-target="#myModal"
-                                   role="button">编辑</a>
-                                <a href="#" onclick="del( {{ $video->id }} )" class="btn btn-danger"
+                                {{--<a href="#" onclick="edit( {{ $video->id }} )" class="btn btn-info "--}}
+                                   {{--data-toggle="modal" data-target="#myModal"--}}
+                                   {{--role="button">编辑</a>--}}
+                                <a href="javascript:void(0);" onclick="del( {{ $video->id }} )" class="btn btn-danger"
                                    role="button">删除</a>
-                                <a href="#" onclick="use( {{ $video->id }} )" class="btn btn-success"
+                                <a href="javascript:void(0);" onclick="use( {{ $video->id }} )" class="btn btn-success"
                                 role="button">@if( $video['isshow'] == 1 )已启用@else启用@endif</a>
                             </p>
                         </div>
@@ -147,6 +147,7 @@
                 success: function (data) {
                     if (data.status == 200) {
                         layer.msg('删除成功', {icon: 6});
+                        window.location.href = "{{ url('admin/VideoBanner') }}";
                     } else if (data.status == 501) {
                         layer.msg('删除失败', {icon: 5});
                     }
@@ -165,6 +166,7 @@
                 success: function (data) {
                     if (data.status == 200) {
                         layer.msg('启用成功', {icon: 6});
+                        window.location.href = "{{ url('admin/VideoBanner') }}";
                     } else if (data.status == 501) {
                         layer.msg('启用失败', {icon: 5});
                     } else if (data.status == 503) {

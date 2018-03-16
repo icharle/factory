@@ -18,7 +18,7 @@
                                 <label>作者：</label>{{ $wechat->author }}
                             </div>
                             <p>
-                                <a href="#" onclick="del( {{ $wechat->id }} )" class="btn btn-danger"
+                                <a href="javascript:void(0);" onclick="del( {{ $wechat->id }} )" class="btn btn-danger"
                                    role="button">删除</a>
                             </p>
                         </div>
@@ -144,6 +144,7 @@
                     success: function (data) {
                         if (data.status == 200) {
                             layer.msg('删除成功', {icon: 6});
+                            window.location.href = "{{ url('admin/CenterWechat') }}";
                         } else if (data.status == 501) {
                             layer.msg('删除失败', {icon: 5});
                         }

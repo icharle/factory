@@ -29,9 +29,9 @@
                                 {{--<a href="#" onclick="edit( {{ $banner->id }} )" class="btn btn-info "--}}
                                    {{--data-toggle="modal" data-target="#myModal"--}}
                                    {{--role="button">编辑</a>--}}
-                                <a href="#" onclick="del( {{ $banner->id }} )" class="btn btn-danger"
+                                <a href="javascript:void(0);" onclick="del( {{ $banner->id }} )" class="btn btn-danger"
                                    role="button">删除</a>
-                                <a href="#" onclick="use( {{ $banner->id }} )" class="btn btn-success"
+                                <a href="javascript:void(0);" onclick="use( {{ $banner->id }} )" class="btn btn-success"
                                    role="button">@if( $banner['isshow'] == 1 )已启用@else启用@endif</a>
                             </p>
                         </div>
@@ -137,6 +137,7 @@
                 success: function (data) {
                     if (data.status == 200) {
                         layer.msg('删除成功', {icon: 6});
+                        window.location.href = "{{ url('admin/StyleBanner') }}";    //请求成功后刷新页面
                     } else if (data.status == 501) {
                         layer.msg('删除失败', {icon: 5});
                     }
@@ -155,6 +156,7 @@
                 success: function (data) {
                     if (data.status == 200) {
                         layer.msg('启用成功', {icon: 6});
+                        window.location.href = "{{ url('admin/StyleBanner') }}";    //请求成功后刷新页面
                     } else if (data.status == 501) {
                         layer.msg('启用失败', {icon: 5});
                     } else if (data.status == 503) {
